@@ -13,7 +13,7 @@ get_header(); ?>
   <?php 
 
 // The Query
-$user_query = new WP_User_Query();
+$user_query = new WP_User_Query(array('orderby' => 'display_name'));
 
 // User Loop
 if ( ! empty( $user_query->results ) ) {
