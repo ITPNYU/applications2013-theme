@@ -1,0 +1,14 @@
+/*
+Theme Name: Applications 2013
+Theme URI: http://github.com/ITPNYU/applications2013-theme
+Author: NYU ITP
+Author URI: http://itp.nyu.edu
+Description: Child theme of Wordpress Twenty Thirteen
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: applications2013-theme
+Template: twentythirteen
+*/
+
+@import url("../twentythirteen/style.css");
