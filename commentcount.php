@@ -12,6 +12,17 @@ get_header(); ?>
 <ul>
   <?php 
 
+// The Query
+$user_query = new WP_User_Query();
+
+// User Loop
+if ( ! empty( $user_query->results ) ) {
+  foreach ( $user_query->results as $user ) {
+    echo '<p>' . $user->display_name . '</p>';
+  }
+} else {
+  echo 'No users found.';
+}
   ?>
 </ul>
 
