@@ -18,8 +18,14 @@ $user_query = new WP_User_Query(array('orderby' => 'display_name'));
 // User Loop
 if ( ! empty( $user_query->results ) ) {
   foreach ( $user_query->results as $user ) {
+    // count all posts owned by this user
+    // count all words in each post 
+    // find all comments owned by this user
+    // count all words in each comment
+
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
-    echo 'Posts: ' . $user->post_count;
+    echo 'Posts: ' . ', ';
+    echo 'comments: ';
     echo '</li>';
   }
 } else {
