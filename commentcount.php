@@ -18,13 +18,21 @@ $user_query = new WP_User_Query(array('orderby' => 'display_name'));
 // User Loop
 if ( ! empty( $user_query->results ) ) {
   foreach ( $user_query->results as $user ) {
-    // count all posts owned by this user
+    // find all posts owned by this user
+    $posts = $wpdb->get_results($wpdb->prepare('SELECT post_content FROM wp_posts WHERE post_author = %d', $user->ID), OBJECT);
+    $post_count = 0;
+    $post_wordcount = 0;
+    foreach ( $posts as $p) {
+      $post_count++;
+      $post_wordcount += str_word_count($p->post_content, 0);
+    }
+
     // count all words in each post 
     // find all comments owned by this user
     // count all words in each comment
 
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
-    echo 'Posts: ' . ', ';
+    echo 'Posts: ' . $post_count . ' ' . $post_wordcount . ', ';
     echo 'comments: ';
     echo '</li>';
   }
