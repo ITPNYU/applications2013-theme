@@ -28,7 +28,7 @@ if ( ! empty( $user_query->results ) ) {
     }
 
     // find all comments owned by this user
-    $comments = $wpdb->get_results($wpdb->prepare('SELECT comment_content FROM wp_comments WHERE comment_author = %d', $user->ID), OBJECT);
+    $comments = $wpdb->get_results($wpdb->prepare('SELECT comment_content FROM wp_comments WHERE comment_author = %s', $user->user_login), OBJECT);
     $comment_count = 0;
     $comment_wordcount = 0;
     foreach ( $comments as $c) {
