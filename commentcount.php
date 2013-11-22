@@ -23,17 +23,22 @@ if ( ! empty( $user_query->results ) ) {
     $post_count = 0;
     $post_wordcount = 0;
     foreach ( $posts as $p) {
-      $post_count++;
-      $post_wordcount += str_word_count($p->post_content, 0);
+      $post_count++; // count number of posts
+      $post_wordcount += str_word_count($p->post_content, 0); // count words in all posts 
     }
 
-    // count all words in each post 
     // find all comments owned by this user
-    // count all words in each comment
+    $comments = $wpdb->get_results($wpdb->prepare('SELECT comment_content FROM wp_comments WHERE comment_author = %d', $user->ID), OBJECT);
+    $comment_count = 0;
+    $comment_wordcount = 0;
+    foreach ( $comments as $c) {
+      $comment_count++; // count number of posts
+      $comment_wordcount += str_word_count($p->comment_content, 0); // count words in all comments
+    }
 
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
     echo 'Posts: ' . $post_count . ' ' . $post_wordcount . ', ';
-    echo 'comments: ';
+    echo 'comments: ' . $comment_count . ' ' . $comment_wordcount . ', ';
     echo '</li>';
   }
 } else {
