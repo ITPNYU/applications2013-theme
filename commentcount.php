@@ -19,7 +19,7 @@ $user_query = new WP_User_Query(array('orderby' => 'display_name'));
 if ( ! empty( $user_query->results ) ) {
   foreach ( $user_query->results as $user ) {
     // find all posts owned by this user
-    $posts = $wpdb->get_results($wpdb->prepare('SELECT post_content FROM wp_posts WHERE post_author = %d AND post_status = "publish"', $user->ID), OBJECT);
+    $posts = $wpdb->get_results($wpdb->prepare('SELECT post_content FROM wp_posts WHERE post_author = %d AND post_status = "publish" AND post_type = "post"', $user->ID), OBJECT);
     $post_count = 0;
     $post_wordcount = 0;
     foreach ( $posts as $p) {
