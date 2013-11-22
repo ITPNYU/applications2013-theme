@@ -33,7 +33,7 @@ if ( ! empty( $user_query->results ) ) {
     $comment_wordcount = 0;
     foreach ( $comments as $c) {
       $comment_count++; // count number of posts
-      $comment_wordcount += str_word_count($p->comment_content, 0); // count words in all comments
+      $comment_wordcount += str_word_count($c->comment_content, 0); // count words in all comments
     }
 
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
