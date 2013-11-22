@@ -38,8 +38,21 @@ if ( ! empty( $user_query->results ) ) {
     }
 
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
-    echo $post_count . ' posts of ' . $post_wordcount . ' words, ';
-    echo $comment_count . ' comments of ' . $comment_wordcount . ' words';
+    echo $post_count . ' post';
+    if ($post_count !== 1) {
+      echo 's';
+    }
+    if ($post_wordcount > 0) {
+      echo ' (' . $post_wordcount . ' words)';
+    }
+    echo ', ';
+    echo $comment_count . ' comment';
+    if ($comment_count !== 1) {
+      echo 's';
+    }
+    if ($comment_wordcount > 0) {
+      echo ' (' . $comment_wordcount . ' words)';
+    }
     echo '</li>';
   }
 } else {
