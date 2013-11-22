@@ -13,7 +13,8 @@ get_header(); ?>
   <?php 
 
 // The Query
-$user_query = new WP_User_Query(array('orderby' => 'display_name'));
+$user_query = new WP_User_Query(array('orderby' => 'display_name', 
+                                      'exclude' => array(1, 6, 7, 8, 9, 30)));
 
 // User Loop
 if ( ! empty( $user_query->results ) ) {
