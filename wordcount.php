@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Comment Count
- * The template for displaying comment count for all users.
+ * Template Name: Word Count
+ * The template for displaying word count for all users.
  */
 
 get_header(); ?>
