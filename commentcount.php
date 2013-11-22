@@ -37,8 +37,8 @@ if ( ! empty( $user_query->results ) ) {
     }
 
     echo '<li><a href="' . site_url() . "/author/" . $user->user_login . '">' . $user->display_name . '</a>: ';
-    echo 'Posts: ' . $post_count . ' ' . $post_wordcount . ', ';
-    echo 'comments: ' . $comment_count . ' ' . $comment_wordcount . ', ';
+    echo $post_count . ' posts of ' . $post_wordcount . ' words, ';
+    echo $comment_count . ' comments of ' . $comment_wordcount . ' words';
     echo '</li>';
   }
 } else {
