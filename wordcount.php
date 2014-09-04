@@ -13,14 +13,13 @@ get_header(); ?>
   <?php 
 
 // The Query
-$user_query = new WP_User_Query(array('orderby' => 'display_name', 
-                                      'exclude' => array(1, 6, 7, 8, 9, 30,347,353)));
+$user_query = new WP_User_Query(array( 'role' => 'Author' ));
 
 // User Loop
 if ( ! empty( $user_query->results ) ) {
   foreach ( $user_query->results as $user ) {
     // find all posts owned by this user
-    $posts = $wpdb->get_results($wpdb->prepare('SELECT post_content FROM wp_posts WHERE post_author = %d AND post_status = "publish" AND post_type = "post"', $user->ID), OBJECT);
+    $posts = $wpdb->get_results($wpdb->prepare('SELECT post_content FROM wp_59_posts WHERE post_author = %d AND post_status = "publish" AND post_type = "post"', $user->ID), OBJECT);
     $post_count = 0;
     $post_wordcount = 0;
     foreach ( $posts as $p) {
@@ -29,7 +28,7 @@ if ( ! empty( $user_query->results ) ) {
     }
 
     // find all comments owned by this user
-    $comments = $wpdb->get_results($wpdb->prepare('SELECT comment_content FROM wp_comments WHERE user_id = %d', $user->ID), OBJECT);
+    $comments = $wpdb->get_results($wpdb->prepare('SELECT comment_content FROM wp_59_comments WHERE user_id = %d', $user->ID), OBJECT);
     $comment_count = 0;
     $comment_wordcount = 0;
     foreach ( $comments as $c) {
